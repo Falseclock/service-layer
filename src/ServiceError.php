@@ -3,7 +3,7 @@
  * @author    Nurlan Mukhanov <nurike@gmail.com>
  * @copyright 2022 Nurlan Mukhanov
  * @license   https://en.wikipedia.org/wiki/MIT_License MIT License
- * @link      https://github.com/Falseclock/service-request
+ * @link      https://github.com/Falseclock/service-layer
  */
 
 declare(strict_types=1);
