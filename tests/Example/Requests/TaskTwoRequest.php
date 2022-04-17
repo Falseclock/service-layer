@@ -11,8 +11,6 @@ declare(strict_types=1);
 namespace Falseclock\Service\Tests\Example\Requests;
 
 use Falseclock\Service\RequestImpl;
-use Falseclock\Service\Validation\Validators\IsBoolean;
-use Falseclock\Service\Validation\Validators\IsInteger;
 use Falseclock\Service\Validation\Validators\IsString;
 
 class TaskTwoRequest extends RequestImpl

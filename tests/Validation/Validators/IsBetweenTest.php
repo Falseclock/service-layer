@@ -114,7 +114,6 @@ class IsBetweenTest extends TestCase
         (new IsBetween("message"))->min(false);
     }
 
-
     /**
      * @throws ValidationException
      */

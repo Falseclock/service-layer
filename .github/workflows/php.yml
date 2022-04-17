@@ -2,9 +2,14 @@ name: PHP Composer
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
   pull_request:
-    branches: [ master ]
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
 
 permissions:
   contents: read
@@ -38,5 +43,5 @@ jobs:
     - name: Run test suite
       run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
        
-    - name: Run test suite
+    - name: Build coverage report
       run: vendor/bin/php-coveralls --verbose

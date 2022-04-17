@@ -20,7 +20,8 @@ class IsInArrayTest extends TestCase
      * @throws ValidationException
      * @noinspection PhpRedundantOptionalArgumentInspection
      */
-    public function testCommon() {
+    public function testCommon()
+    {
         $validation = new IsInArray("message");
         $validation->haystack([1, 2, 3]);
 

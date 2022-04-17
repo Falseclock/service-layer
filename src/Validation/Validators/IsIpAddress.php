@@ -24,6 +24,6 @@ class IsIpAddress extends ValidatorImpl
             return false;
         }
 
-		return inet_pton($value) !== false;
-	}
+        return inet_pton($value) !== false;
+    }
 }

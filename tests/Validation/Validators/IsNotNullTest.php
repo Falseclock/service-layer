@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace Falseclock\Service\Tests\Validation\Validators;
 
-use Falseclock\Service\Validation\Validators\IsInteger;
 use Falseclock\Service\Validation\Validators\IsNotNull;
 use PHPUnit\Framework\TestCase;
 
