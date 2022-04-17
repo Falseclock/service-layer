@@ -10,10 +10,13 @@ declare(strict_types=1);
 
 namespace Falseclock\Service\Validation\Validators;
 
+use Falseclock\Service\Validation\ValidationException;
 use Falseclock\Service\Validation\ValidatorImpl;
 
 class IsInstanceOf extends ValidatorImpl
 {
+    public const ERROR_NOT_CLASS_DEFINED = "No class defined";
+
     /** @var string */
     protected $class;
 
@@ -21,11 +24,16 @@ class IsInstanceOf extends ValidatorImpl
      * @param $value
      * @param bool|null $nullable
      * @return bool
+     * @throws ValidationException
      */
     public function check($value = null, ?bool $nullable = false): bool
     {
         if (is_null($value) && $nullable) {
             return true;
+        }
+
+        if (is_null($this->class)) {
+            throw new ValidationException(self::ERROR_NOT_CLASS_DEFINED);
         }
 
         return $value instanceof $this->class;
