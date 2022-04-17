@@ -22,8 +22,9 @@ class IsPositiveFloat extends IsFloat
      */
     public function check($value = null, ?bool $nullable = false): bool
     {
-        if (!parent::check($value, $nullable))
+        if (!parent::check($value, $nullable)) {
             return false;
+        }
 
         return $value > 0.0;
     }
