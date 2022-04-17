@@ -1,0 +1,40 @@
+{
+  "name": "falseclock/service-layer",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Nurlan Mukhanov",
+      "email": "nurike@gmail.com",
+      "homepage": "https://github.com/Falseclock/",
+      "role": "Author"
+    }
+  ],
+  "keywords": [
+    "service",
+    "validation",
+    "request"
+  ],
+  "require": {
+    "php": ">=7.3",
+    "psr/log": ">=1.1.4",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5.20",
+    "php-coveralls/php-coveralls": "^2.5.2",
+    "apache/log4php": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Falseclock\\Service\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Falseclock\\Service\\Tests\\": "tests/"
+    }
+  }
+}
