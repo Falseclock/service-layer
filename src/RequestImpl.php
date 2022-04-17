@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Falseclock\Service;
 
 use Falseclock\Service\Validation\ValidationProcess;
+use Falseclock\Service\Validation\ValidationProcessImpl;
 use Falseclock\Service\Validation\Validator;
 use Falseclock\Service\Validation\ValidatorError;
 use stdClass;
@@ -19,14 +20,6 @@ abstract class RequestImpl implements Request
 {
     /** @var ValidationProcess */
     protected $validationProcess;
-
-    /**
-     * @return ValidationProcess
-     */
-    public function getValidationProcess(): ValidationProcess
-    {
-        return $this->validationProcess;
-    }
 
     /**
      * Специально определяем конструктор, чтобы у нас везде в потомках конструктор был однотипный
@@ -49,6 +42,14 @@ abstract class RequestImpl implements Request
             if (property_exists($this, $key))
                 $this->$key = $value;
         }
+    }
+
+    /**
+     * @return ValidationProcess
+     */
+    public function getValidationProcess(): ValidationProcess
+    {
+        return $this->validationProcess;
     }
 
     /**
@@ -127,7 +128,7 @@ abstract class RequestImpl implements Request
     protected function addValidator($checkingValue, Validator ...$validators)
     {
         if (is_null($this->validationProcess)) {
-            $this->validationProcess = new ValidationProcess();
+            $this->validationProcess = new ValidationProcessImpl();
         }
 
         foreach ($validators as $validator) {

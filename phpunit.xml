@@ -7,6 +7,10 @@
         <include>
             <directory>src</directory>
         </include>
+        <exclude>
+            <file>src/Validation/Validator.php</file>
+            <file>src/Validation/ValidationProcess.php</file>
+        </exclude>
     </coverage>
     <testsuites>
         <testsuite name="Project Test Suite">

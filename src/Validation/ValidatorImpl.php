@@ -14,7 +14,7 @@ abstract class ValidatorImpl implements Validator
 {
     /**
      * @var mixed Значение переменной устанавливается динамически
-     * @see ValidationProcess::validate()
+     * @see ValidationProcessImpl::validate()
      */
     public $value;
     protected $message;
