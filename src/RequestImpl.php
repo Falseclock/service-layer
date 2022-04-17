@@ -21,6 +21,14 @@ abstract class RequestImpl implements Request
     protected $validationProcess;
 
     /**
+     * @return ValidationProcess
+     */
+    public function getValidationProcess(): ValidationProcess
+    {
+        return $this->validationProcess;
+    }
+
+    /**
      * Специально определяем конструктор, чтобы у нас везде в потомках конструктор был однотипный
      *
      * @param stdClass|null $stdClass $stdClass
