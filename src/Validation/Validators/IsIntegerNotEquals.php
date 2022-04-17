@@ -37,7 +37,7 @@ class IsIntegerNotEquals extends IsInteger
      */
     public function check($value = null, ?bool $nullable = false): bool
     {
-        if (!parent::check($value)) {
+        if (!parent::check($value, $nullable)) {
             return true;
         }
 
