@@ -10,20 +10,29 @@ declare(strict_types=1);
 
 namespace Falseclock\Service\Validation\Validators;
 
+use Falseclock\Service\Validation\ValidationException;
 use Falseclock\Service\Validation\ValidatorImpl;
 
 class IsFloat extends ValidatorImpl
 {
+    public const ERROR_INT_PROVIDED = "IsInteger class should not validate integer values";
+
     /**
      * @param mixed $value
      * @param bool|null $nullable
      * @return bool
+     * @throws ValidationException
      */
     public function check($value = null, ?bool $nullable = false): bool
     {
         if (is_null($value) && $nullable) {
             return true;
         }
+
+        if (is_int($value)) {
+            throw new ValidationException(self::ERROR_INT_PROVIDED);
+        }
+
         return is_float($value);
     }
 }
