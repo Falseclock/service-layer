@@ -12,6 +12,10 @@
             <file>src/Validation/Validator.php</file>
             <file>src/Validation/ValidationProcess.php</file>
         </exclude>
+        <report>
+            <clover outputFile="build/logs/clover.xml"/>
+            <xml outputDirectory="build/logs"/>
+        </report>
     </coverage>
     <testsuites>
         <testsuite name="Project Test Suite">
