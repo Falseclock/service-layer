@@ -3,6 +3,7 @@
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.5/phpunit.xsd"
          colors="true"
          bootstrap="vendor/autoload.php">
+
     <coverage>
         <include>
             <directory>src</directory>

@@ -36,7 +36,7 @@ class IsIntegerTest extends TestCase
         self::assertFalse($validation->check(null));
         self::assertTrue($validation->check(null, true));
 
-        $this->expectErrorMessage(IsInteger::ERROR_FLOAT_PROVIDED);
+        self::expectExceptionMessage(IsInteger::ERROR_FLOAT_PROVIDED);
         self::assertFalse($validation->check(1.234));
     }
 }

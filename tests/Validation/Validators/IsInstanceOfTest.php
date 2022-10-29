@@ -46,7 +46,7 @@ class IsInstanceOfTest extends TestCase
     public function testNoClass()
     {
         $validation = new IsInstanceOf("message");
-        $this->expectErrorMessage(IsInstanceOf::ERROR_NOT_CLASS_DEFINED);
+        self::expectExceptionMessage(IsInstanceOf::ERROR_NOT_CLASS_DEFINED);
         self::assertFalse($validation->check(1));
     }
 }
