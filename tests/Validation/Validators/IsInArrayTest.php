@@ -58,7 +58,7 @@ class IsInArrayTest extends TestCase
         $validation = new IsInArray("message");
         $validation->haystack([1, 2, 3]);
 
-        $this->expectErrorMessage(IsInArray::ERROR_MULTI_DIMENSIONAL);
+        self::expectExceptionMessage(IsInArray::ERROR_MULTI_DIMENSIONAL);
         $validation->haystack([1, 2, 3, [4, 5, 6]]);
     }
 
@@ -68,7 +68,7 @@ class IsInArrayTest extends TestCase
     public function testNoHaystack()
     {
         $validation = new IsInArray("message");
-        $this->expectErrorMessage(IsInArray::ERROR_NO_ARRAY_DEFINED);
+        self::expectExceptionMessage(IsInArray::ERROR_NO_ARRAY_DEFINED);
         $validation->check(1);
     }
 }

@@ -39,7 +39,7 @@ class IsIntegerNotEqualsTest extends TestCase
         self::assertTrue($validation->check(null, true));
         self::assertFalse($validation->check(2));
 
-        $this->expectErrorMessage(IsInteger::ERROR_FLOAT_PROVIDED);
+        self::expectExceptionMessage(IsInteger::ERROR_FLOAT_PROVIDED);
         self::assertTrue($validation->check(1.234));
     }
 
@@ -49,7 +49,7 @@ class IsIntegerNotEqualsTest extends TestCase
     public function testNoClass()
     {
         $validation = new IsIntegerNotEquals("message");
-        $this->expectErrorMessage(IsIntegerNotEquals::ERROR_NOTHING_TO_COMPARE);
+        self::expectExceptionMessage(IsIntegerNotEquals::ERROR_NOTHING_TO_COMPARE);
         self::assertFalse($validation->check(1));
     }
 }

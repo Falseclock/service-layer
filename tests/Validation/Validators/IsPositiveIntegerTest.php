@@ -28,7 +28,7 @@ class IsPositiveIntegerTest extends TestCase
         self::assertFalse($validation->check(0));
         self::assertFalse($validation->check(""));
 
-        $this->expectErrorMessage(IsInteger::ERROR_FLOAT_PROVIDED);
+        self::expectExceptionMessage(IsInteger::ERROR_FLOAT_PROVIDED);
         self::assertFalse($validation->check(1.00000001));
     }
 }

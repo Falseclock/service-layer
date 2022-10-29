@@ -36,7 +36,7 @@ class IsFloatTest extends TestCase
         self::assertFalse($validation->check(null));
         self::assertTrue($validation->check(null, true));
 
-        $this->expectErrorMessage(IsFloat::ERROR_INT_PROVIDED);
+        self::expectExceptionMessage(IsFloat::ERROR_INT_PROVIDED);
         self::assertFalse($validation->check(1));
     }
 }
