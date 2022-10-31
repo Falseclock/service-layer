@@ -16,10 +16,9 @@ class IsNotNull extends ValidatorImpl
 {
     /**
      * @param null $value
-     * @param bool|null $nullable
      * @return bool
      */
-    public function check($value = null, ?bool $nullable = false): bool
+    public function check($value = null): bool
     {
         return !is_null($value);
     }

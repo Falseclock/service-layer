@@ -17,15 +17,19 @@ abstract class ValidatorImpl implements Validator
      * @see ValidationProcessImpl::validate()
      */
     public $value;
+    /** @var string|null Error message */
     protected $message;
+    /** @var bool */
+    protected $nullable = false;
 
     /**
      * Validator constructor.
      *
      * @param string|null $message
      */
-    public function __construct(string $message)
+    public function __construct(string $message, ?bool $nullable = false)
     {
+        $this->nullable = $nullable;
         $this->message = $message;
     }
 

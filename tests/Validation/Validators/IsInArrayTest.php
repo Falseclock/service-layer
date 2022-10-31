@@ -26,19 +26,13 @@ class IsInArrayTest extends TestCase
         $validation->haystack([1, 2, 3]);
 
         self::assertFalse($validation->check(4));
-        self::assertFalse($validation->check(4, true));
         self::assertFalse($validation->check(1.234));
-        self::assertFalse($validation->check(1.234, true));
         self::assertFalse($validation->check("string"));
-        self::assertFalse($validation->check("string", true));
         self::assertFalse($validation->check([]));
-        self::assertFalse($validation->check([], true));
         self::assertFalse($validation->check((object)[]));
-        self::assertFalse($validation->check((object)[], true));
         self::assertFalse($validation->check(true));
         self::assertFalse($validation->check(false));
         self::assertFalse($validation->check(null));
-        self::assertTrue($validation->check(null, true));
         self::assertTrue($validation->check(1));
         self::assertTrue($validation->check(2));
         self::assertTrue($validation->check(3));
@@ -48,6 +42,15 @@ class IsInArrayTest extends TestCase
         self::assertFalse($validation->check("1"));
         self::assertFalse($validation->check("2"));
         self::assertFalse($validation->check("3"));
+
+        $validation = new IsInArray("message", true);
+        $validation->haystack([1, 2, 3]);
+        self::assertFalse($validation->check(4));
+        self::assertFalse($validation->check(1.234));
+        self::assertFalse($validation->check("string"));
+        self::assertFalse($validation->check([]));
+        self::assertFalse($validation->check((object)[]));
+        self::assertTrue($validation->check(null));
     }
 
     /**

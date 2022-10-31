@@ -31,13 +31,12 @@ class IsIntegerNotEquals extends IsInteger
 
     /**
      * @param null $value
-     * @param bool|null $nullable
      * @return bool
      * @throws ValidationException
      */
-    public function check($value = null, ?bool $nullable = false): bool
+    public function check($value = null): bool
     {
-        if (!parent::check($value, $nullable)) {
+        if (!parent::check($value)) {
             return true;
         }
 

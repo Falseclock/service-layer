@@ -16,12 +16,11 @@ class IsNotSame extends IsSame
 {
     /**
      * @param null $value
-     * @param bool|null $nullable
      * @return bool
      * @throws ValidationException
      */
-    public function check($value = null, ?bool $nullable = false): bool
+    public function check($value = null): bool
     {
-        return !parent::check($value, $nullable);
+        return !parent::check($value);
     }
 }

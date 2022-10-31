@@ -14,11 +14,10 @@ interface Validator
 {
     /**
      * @param mixed $value
-     * @param bool|null $nullable
      * @return bool
      * @throws ValidationException
      */
-    public function check($value = null, ?bool $nullable = false): bool;
+    public function check($value = null): bool;
 
     /**
      * @return ValidatorError

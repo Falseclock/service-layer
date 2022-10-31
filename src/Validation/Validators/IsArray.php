@@ -16,12 +16,11 @@ class IsArray extends ValidatorImpl
 {
     /**
      * @param null $value
-     * @param bool|null $nullable
      * @return bool
      */
-    public function check($value = null, ?bool $nullable = false): bool
+    public function check($value = null): bool
     {
-        if (is_null($value) && $nullable) {
+        if (is_null($value) && $this->nullable) {
             return true;
         }
 

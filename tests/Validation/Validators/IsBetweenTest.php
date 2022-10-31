@@ -25,19 +25,13 @@ class IsBetweenTest extends TestCase
         $validation = (new IsBetween("message"))->min(-10)->max(-1);
 
         self::assertFalse($validation->check(1));
-        self::assertFalse($validation->check(1, true));
         self::assertFalse($validation->check(1.234));
-        self::assertFalse($validation->check(1.234, true));
         self::assertFalse($validation->check("string"));
-        self::assertFalse($validation->check("string", true));
         self::assertFalse($validation->check([]));
-        self::assertFalse($validation->check([], true));
         self::assertFalse($validation->check((object)[]));
-        self::assertFalse($validation->check((object)[], true));
         self::assertFalse($validation->check(true));
         self::assertFalse($validation->check(false));
         self::assertFalse($validation->check(null));
-        self::assertTrue($validation->check(null, true));
 
         self::assertTrue($validation->check(-9));
         self::assertTrue($validation->check(-9.5));
@@ -45,6 +39,13 @@ class IsBetweenTest extends TestCase
         $validation = (new IsBetween("message"))->min(1.01)->max(1.03);
         self::assertTrue($validation->check(1.02));
 
+        $validation = (new IsBetween("message", true))->min(-10)->max(-1);
+        self::assertFalse($validation->check(1));
+        self::assertFalse($validation->check(1.234));
+        self::assertFalse($validation->check("string"));
+        self::assertFalse($validation->check([]));
+        self::assertFalse($validation->check((object)[]));
+        self::assertTrue($validation->check(null));
     }
 
     /**

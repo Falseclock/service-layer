@@ -42,8 +42,8 @@ class IsNotSameTest extends TestCase
         $validation = (new IsNotSame("message"))->against(false);
         self::assertFalse($validation->check(false));
 
-        $validation = (new IsNotSame("message"))->against(null);
-        self::assertFalse($validation->check(null, true));
+        $validation = (new IsNotSame("message", true))->against(null);
+        self::assertFalse($validation->check());
 
         $object = (object)[];
         $validation = (new IsNotSame("message"))->against($object);

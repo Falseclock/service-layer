@@ -14,9 +14,9 @@ use Falseclock\Service\Validation\ValidatorImpl;
 
 class IsIpAddress extends ValidatorImpl
 {
-    public function check($value = null, ?bool $nullable = false): bool
+    public function check($value = null): bool
     {
-        if (is_null($value) && $nullable) {
+        if (is_null($value) && $this->nullable) {
             return true;
         }
 

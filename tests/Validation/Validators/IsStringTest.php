@@ -22,18 +22,20 @@ class IsStringTest extends TestCase
     {
         $validation = new IsString("message");
         self::assertFalse($validation->check(1));
-        self::assertFalse($validation->check(1, true));
         self::assertFalse($validation->check(1.234));
-        self::assertFalse($validation->check(1.234, true));
         self::assertTrue($validation->check("string"));
-        self::assertTrue($validation->check("string", true));
         self::assertFalse($validation->check([]));
-        self::assertFalse($validation->check([], true));
         self::assertFalse($validation->check((object)[]));
-        self::assertFalse($validation->check((object)[], true));
         self::assertFalse($validation->check(true));
         self::assertFalse($validation->check(false));
         self::assertFalse($validation->check(null));
-        self::assertTrue($validation->check(null, true));
+
+        $validation = new IsString("message", true);
+        self::assertFalse($validation->check(1));
+        self::assertFalse($validation->check(1.234));
+        self::assertTrue($validation->check("string"));
+        self::assertFalse($validation->check([]));
+        self::assertFalse($validation->check((object)[]));
+        self::assertTrue($validation->check(null));
     }
 }

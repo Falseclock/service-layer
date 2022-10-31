@@ -22,20 +22,22 @@ class IsNumericTest extends TestCase
     {
         $validation = new IsNumeric("message");
         self::assertTrue($validation->check(1));
-        self::assertTrue($validation->check(1, true));
         self::assertTrue($validation->check(1.234));
-        self::assertTrue($validation->check(1.234, true));
         self::assertTrue($validation->check("1"));
-        self::assertTrue($validation->check("2", true));
         self::assertTrue($validation->check("111111111111.1234"));
-        self::assertTrue($validation->check("111111111111.1234", true));
         self::assertFalse($validation->check([]));
-        self::assertFalse($validation->check([], true));
         self::assertFalse($validation->check((object)[]));
-        self::assertFalse($validation->check((object)[], true));
         self::assertFalse($validation->check(true));
         self::assertFalse($validation->check(false));
         self::assertFalse($validation->check(null));
-        self::assertTrue($validation->check(null, true));
+
+        $validation = new IsNumeric("message", true);
+        self::assertTrue($validation->check(1));
+        self::assertTrue($validation->check(1.234));
+        self::assertTrue($validation->check("2"));
+        self::assertTrue($validation->check("111111111111.1234"));
+        self::assertFalse($validation->check([]));
+        self::assertFalse($validation->check((object)[]));
+        self::assertTrue($validation->check(null));
     }
 }

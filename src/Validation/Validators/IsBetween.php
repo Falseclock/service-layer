@@ -24,14 +24,13 @@ class IsBetween extends ValidatorImpl
     protected $minimum;
 
     /**
-     * @param $value
-     * @param bool|null $nullable
+     * @param null $value
      * @return bool
      * @throws ValidationException
      */
-    public function check($value = null, ?bool $nullable = false): bool
+    public function check($value = null): bool
     {
-        if (is_null($value) && $nullable) {
+        if (is_null($value) && $this->nullable) {
             return true;
         }
 

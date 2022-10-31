@@ -25,19 +25,14 @@ class IsIpAddressTest extends TestCase
         $validation = new IsIpAddress("message");
 
         self::assertFalse($validation->check(1));
-        self::assertFalse($validation->check(1, true));
         self::assertFalse($validation->check(1.234));
-        self::assertFalse($validation->check(1.234, true));
         //FIXME:self::assertFalse($validation->check("string"));
         //FIXME:self::assertFalse($validation->check("string", true));
         self::assertFalse($validation->check([]));
-        self::assertFalse($validation->check([], true));
         self::assertFalse($validation->check((object)[]));
-        self::assertFalse($validation->check((object)[], true));
         self::assertFalse($validation->check(true));
         self::assertFalse($validation->check(false));
         self::assertFalse($validation->check(null));
-        self::assertTrue($validation->check(null, true));
 
         self::assertTrue($validation->check("1.2.3.4"));
         self::assertTrue($validation->check("0.0.0.0"));
@@ -47,5 +42,12 @@ class IsIpAddressTest extends TestCase
         //FIXME:self::assertFalse($validation->check("1.2.3.4/24"));
         //FIXME:self::assertFalse($validation->check("0.0.0.0/32"));
         //FIXME:self::assertFalse($validation->check("2001:db8:1234:0000:0000:0000:0000:0000/24"));
+
+        $validation = new IsIpAddress("message", true);
+        self::assertFalse($validation->check(1));
+        self::assertFalse($validation->check(1.234));
+        self::assertFalse($validation->check([]));
+        self::assertFalse($validation->check((object)[]));
+        self::assertTrue($validation->check(null));
     }
 }

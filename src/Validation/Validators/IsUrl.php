@@ -14,16 +14,15 @@ class IsUrl extends IsString
 {
     /**
      * @param $value
-     * @param bool|null $nullable
      * @return bool
      */
-    public function check($value = null, ?bool $nullable = false): bool
+    public function check($value = null): bool
     {
-        if (!parent::check($value, $nullable)) {
+        if (!parent::check($value)) {
             return false;
         }
 
-        if (is_null($value) && $nullable) {
+        if (is_null($value) && $this->nullable) {
             return true;
         }
 

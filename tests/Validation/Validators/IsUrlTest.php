@@ -21,19 +21,13 @@ class IsUrlTest extends TestCase
         $validation = new IsUrl("message");
 
         self::assertFalse($validation->check(1));
-        self::assertFalse($validation->check(1, true));
         self::assertFalse($validation->check(1.234));
-        self::assertFalse($validation->check(1.234, true));
         self::assertFalse($validation->check("string"));
-        self::assertFalse($validation->check("string", true));
         self::assertFalse($validation->check([]));
-        self::assertFalse($validation->check([], true));
         self::assertFalse($validation->check((object)[]));
-        self::assertFalse($validation->check((object)[], true));
         self::assertFalse($validation->check(true));
         self::assertFalse($validation->check(false));
         self::assertFalse($validation->check(null));
-        self::assertTrue($validation->check(null, true));
 
         self::assertTrue($validation->check("ftp://ftp.is.co.za.example.org/rfc/rfc1808.txt"));
         self::assertTrue($validation->check("gopher://spinaltap.micro.umn.example.edu/00/Weather/California/Los%20Angeles"));
@@ -46,5 +40,13 @@ class IsUrlTest extends TestCase
         self::assertTrue($validation->check("mailto:John.Doe@example.com"));
         self::assertTrue($validation->check("news:comp.infosystems.www.servers.unix"));
         self::assertTrue($validation->check("telnet://192.0.2.16:80/"));
+
+        $validation = new IsUrl("message", true);
+        self::assertFalse($validation->check(1));
+        self::assertFalse($validation->check(1.234));
+        self::assertFalse($validation->check("string"));
+        self::assertFalse($validation->check([]));
+        self::assertFalse($validation->check((object)[]));
+        self::assertTrue($validation->check(null));
     }
 }
