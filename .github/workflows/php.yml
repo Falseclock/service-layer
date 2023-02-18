@@ -14,18 +14,11 @@ on:
 permissions:
   contents: read
 
-build:
-  image: default-bionic
-  environment:
-    php: 8.1.2
-
 jobs:
 
   build:
     runs-on: ubuntu-20.04
-    image: default-bionic
-    environment:
-      php: 8.1.2
+
     steps:
     - uses: actions/checkout
 
@@ -36,6 +29,7 @@ jobs:
       id: composer-cache
       uses: actions/cache
       with:
+        php-version: 8.1
         path: vendor
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
