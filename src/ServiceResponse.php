@@ -37,26 +37,6 @@ class ServiceResponse
     }
 
     /**
-     * Check's whether request values are valid
-     *
-     * @return bool
-     */
-    public function isRequestValid(): bool
-    {
-        return count($this->requestErrors) == 0;
-    }
-
-    /**
-     * Check's whether request values are NOT valid
-     *
-     * @return bool
-     */
-    public function isRequestInValid(): bool
-    {
-        return count($this->requestErrors) != 0;
-    }
-
-    /**
      * @return ValidatorError[]
      */
     public function getRequestErrors(): array
@@ -85,5 +65,57 @@ class ServiceResponse
         }
 
         return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSuccess(): bool
+    {
+        return $this->isRequestValid() && $this->hasNotServerErrors();
+    }
+
+    /**
+     * Check's whether request values are valid
+     *
+     * @return bool
+     */
+    public function isRequestValid(): bool
+    {
+        return count($this->requestErrors) == 0;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasNotServerErrors(): bool
+    {
+        return !$this->hasServerErrors();
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasServerErrors(): bool
+    {
+        return count($this->serviceErrors) > 0;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFailed(): bool
+    {
+        return $this->isRequestInValid() || $this->hasServerErrors();
+    }
+
+    /**
+     * Check's whether request values are NOT valid
+     *
+     * @return bool
+     */
+    public function isRequestInValid(): bool
+    {
+        return count($this->requestErrors) != 0;
     }
 }
