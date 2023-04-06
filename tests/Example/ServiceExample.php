@@ -21,9 +21,12 @@ class ServiceExample extends Service
 {
     public const ERROR_CODE_EXAMPLE = 2345;
 
+    protected ?LoggerInterface $logger = null;
+
     public function __construct(?LoggerInterface $logger = null)
     {
-        parent::__construct($logger);
+        $this->logger = $logger;
+        parent::__construct();
     }
 
     /**

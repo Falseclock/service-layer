@@ -11,27 +11,24 @@ declare(strict_types=1);
 namespace Falseclock\Service;
 
 use Falseclock\Service\Validation\ValidatorError;
-use Psr\Log\LoggerInterface;
 
 abstract class Service
 {
     /** @var ValidatorError[] */
-    public $lastValidationErrors = [];
-    /** @var LoggerInterface */
-    protected $logger;
+    public array $lastValidationErrors = [];
     /** @var ServiceResponse */
     protected $response;
     /** @var ServiceError[] */
-    protected $serviceErrors = [];
+    protected array $serviceErrors = [];
 
     /**
      * Service constructor.
      *
-     * @param LoggerInterface|null $logger
+     * @param mixed ...$arguments
      */
-    public function __construct(?LoggerInterface $logger = null)
+    public function __construct(...$arguments)
     {
-        $this->logger = $logger;
+
     }
 
     /**
@@ -72,10 +69,10 @@ abstract class Service
      * Just return result to the caller
      *
      * @param mixed $result
-     * @param ServiceError ...$errors
+     * @param ServiceError|null ...$errors
      * @return ServiceResponse
      */
-    final protected function createResponse($result, ?ServiceError ...$errors): ServiceResponse
+    final protected function createResponse(mixed $result, ?ServiceError ...$errors): ServiceResponse
     {
         return new ServiceResponse($result, array_merge($this->serviceErrors, $errors), $this->lastValidationErrors);
     }
