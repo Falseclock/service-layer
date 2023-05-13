@@ -72,7 +72,7 @@ abstract class Service
      * @param ServiceError|null ...$errors
      * @return ServiceResponse
      */
-    final protected function createResponse(mixed $result, ?ServiceError ...$errors): ServiceResponse
+    final protected function createResponse($result = null, ?ServiceError ...$errors): ServiceResponse
     {
         return new ServiceResponse($result, array_merge($this->serviceErrors, $errors), $this->lastValidationErrors);
     }
